@@ -1,0 +1,21 @@
+<h1>Todo Lists</h1>
+
+<% @todo_lists.each do |todo_list| %>
+  <div style="padding-top: 15px;">
+    <% if todo_list.todo_items.any?{|i| not i.done?} %>
+      <%= content_tag :span, "#{todo_list.list_due_date}", style: "border:1px solid red;" %> 
+    <% else %>
+      <%= content_tag :span, "#{todo_list.list_due_date}", style: "border:1px solid green;" %> 
+    <% end %>
+    <%= link_to "#{todo_list.list_name}", todo_list_todo_items_path(todo_list),
+      style: "font:bold 15px arial, sans-serif;" %>
+    <%= link_to 'Edit', edit_todo_list_path(todo_list) %>
+    <%= link_to 'Delete', todo_list, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
+<% end %>
+<p/>
+<%= will_paginate @todo_lists %>
+
+<br />
+
+<%= link_to 'New Todo list', new_todo_list_path %>

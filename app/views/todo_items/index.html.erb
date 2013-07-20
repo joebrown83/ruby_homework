@@ -1,0 +1,21 @@
+<div style="padding-top: 15px;">
+  <%= "#{@todo_list.list_due_date}" %>
+  <%= content_tag :span, "#{@todo_list.list_name}", style: "font:bold 15px arial, sans-serif;" %>
+  <%= link_to 'Add Todo Item', new_todo_list_todo_item_path(@todo_list) %>
+</div>
+
+<% @todo_items.each do |todo_item| %>
+    <div style="padding-top: 15px;">
+    <% if todo_item.done? %>
+      <%= content_tag :span, "#{todo_item.due_date}", style: "border:1px solid green;" %>
+    <% else %>
+      <%= content_tag :span, "#{todo_item.due_date}", style: "border:1px solid red;" %>
+    <% end %>
+    <%= link_to "#{todo_item.task_title}", todo_list_todo_item_path(@todo_list, todo_item) %>
+    </div>
+<% end %>
+<p/>
+<%= will_paginate @todo_items %>
+
+<br />
+

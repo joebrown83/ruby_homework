@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Todos</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<% if logged_in? %>
+  <div style="float: right;">
+    <%= link_to "Home", todo_lists_path %> | <%= link_to "My Account", edit_account_path(current_user.account) %> | You are logged in as <%= current_user.login %> |
+    <%= link_to "Logout", logout_path, method: :delete %>
+  </div>
+<% end %>
+
+<% flash.each do |key, value| %>
+  <%= content_tag :p, value, class: key %>
+<% end %>
+
+<%= yield %>
+
+</body>
+</html>
