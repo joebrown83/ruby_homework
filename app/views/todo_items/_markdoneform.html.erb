@@ -1,0 +1,12 @@
+<%= form_for([@todo_list, @todo_item], remote: true) do |f| %>
+  <% if @todo_item.done? %>
+    <%= content_tag :span, "#{@todo_item.due_date}", style: "border:1px solid green;" %>
+  <% else %>
+    <%= content_tag :span, "#{@todo_item.due_date}", style: "border:1px solid red;" %>
+  <% end %>
+  <%= link_to "#{@todo_item.task_title}", todo_list_todo_item_path(@todo_list, @todo_item) %>
+  <% if not @todo_item.done? %>
+    <%= f.hidden_field :done, value: 1 %>
+    <%= f.submit 'Mark as done' %>
+  <% end %>
+<% end %>

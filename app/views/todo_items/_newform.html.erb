@@ -1,0 +1,20 @@
+<%= form_for([@todo_list, @todo_list.todo_items.new]) do |f| %>
+  <div class="field">
+    <%= f.hidden_field :done, value: 0 %>
+  </div>
+  <div class="date-field">
+    <%= f.label :due_date %><br />
+    <%= f.text_field :due_date %>
+  </div>
+  <div class="field">
+    <%= f.label :task_title %><br />
+    <%= f.text_field :task_title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description, size: "40x12" %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
