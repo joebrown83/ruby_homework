@@ -1,0 +1,32 @@
+// Place all the styles related to the recipes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.special_link {
+  text-decoration: underline;
+  color: blue;
+}
+
+table {
+  border-collapse: collapse;
+  border-color: #ff3333;
+}
+
+th {
+  background-color: #ff3333;
+  font-weight: bold; 
+  color: #ffffff;
+  border-color: #000000;
+}
+
+.even {
+  background-color: #ff8080;
+}
+
+.odd {
+  background-color: #fdf8ff;
+}
+
+h1 {
+  font-size: 30px;
+}
